@@ -1,15 +1,14 @@
 package br.com.teamfrank.domain.models.entities;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import lombok.Data;
 
 @Data
@@ -33,6 +32,8 @@ public class Professor {
     @OneToMany(mappedBy = "professor")
     private List<Aluno> alunos;
     
-    @OneToMany(mappedBy = "professor", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<FaixaUsuario> faixas = new ArrayList<>();
+    @OneToOne
+    @JoinColumn(name = "faixa_id")
+    private Faixa faixa;
+
 }

@@ -1,8 +1,12 @@
 package br.com.teamfrank.domain.models.entities;
 
-import jakarta.persistence.*;
-import lombok.Data;
+import java.util.Date;
 import java.util.UUID;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import lombok.Data;
 
 @Data
 @Entity
@@ -14,8 +18,9 @@ public class Faixa {
     @Column(nullable = false)
     private String cor;
     
-
-    @Column(nullable = false)
     private String nivel;
+    
+    @Column(nullable = false)
+    private Date dataAquisicao;
 
 }

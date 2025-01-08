@@ -1,6 +1,6 @@
 package br.com.teamfrank.domain.models.dtos;
 
-import java.util.List;
+import java.util.Date;
 import java.util.UUID;
 
 import lombok.Data;
@@ -9,17 +9,19 @@ import lombok.Data;
 public class AlunoResponse {
     private UUID id;
     private String nome;
-    private String datanasc;
+    private Date datanasc;
+    private Integer idade;
     private String sexo;
     private String cpf;
     private String pai;
     private String mae;
-    private String tel;
+    private String telelefone;
     private String responsavel;
-    private String endereco;
+    private String tipo;
+    private EnderecoResponse endereco;
     private String unidade;
     private String professor;
     private String mensagem;
+    private FaixaResponse faixa;
     
-    private List<String> faixas;
 }

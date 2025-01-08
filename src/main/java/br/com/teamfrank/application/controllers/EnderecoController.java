@@ -3,6 +3,8 @@ package br.com.teamfrank.application.controllers;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -15,7 +17,7 @@ import br.com.teamfrank.domain.models.dtos.EnderecoRequest;
 import br.com.teamfrank.domain.models.dtos.EnderecoResponse;
 
 @RestController
-@RequestMapping("/enderecos")
+@RequestMapping("/api/enderecos")
 class EnderecoController {
     @Autowired
     private EnderecoService enderecoService;
@@ -28,6 +30,16 @@ class EnderecoController {
     @PutMapping("/{id}")
     public EnderecoResponse alterarEndereco(@PathVariable UUID id, @RequestBody EnderecoRequest request) {
         return enderecoService.alterarEndereco(id, request);
+    }
+    
+    @DeleteMapping("/{id}")
+	public void deletarEndereco(@PathVariable UUID id) {
+		enderecoService.deletarEndereco(id);
+	}
+   
+    @GetMapping("/{id}")
+        public EnderecoResponse buscarEndereco(@PathVariable UUID id) {
+    	            return enderecoService.buscarEndereco(id);
     }
 
 }

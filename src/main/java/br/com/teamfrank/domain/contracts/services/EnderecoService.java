@@ -10,5 +10,7 @@ public interface EnderecoService {
 
 	EnderecoResponse alterarEndereco(UUID id, EnderecoRequest request);
 
-	EnderecoResponse inativarEndereco(UUID id);
+	EnderecoResponse deletarEndereco(UUID id);
+	
+	EnderecoResponse buscarEndereco(UUID id);
 }

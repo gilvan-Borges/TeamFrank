@@ -12,12 +12,12 @@ import lombok.Data;
 public class ProfessorResponse {
     private UUID id;
     private String nome;
-    private String endereco;
+    private UUID enderecoId;
     private String sexo;
     private String cpf;
     private List<String> unidades;  // Lista de nomes ou IDs das unidades
     private List<String> alunos;
-    private String mensagem;
+    
     private List<String> faixas;
 
     public void setAlunos(List<Aluno> alunos) {
@@ -26,5 +26,11 @@ public class ProfessorResponse {
             .collect(Collectors.toList()) 
             : new ArrayList<>();  // Inicializa como lista vazia
     }
+    
+	public void setUnidades(List<String> unidades) {
+		this.unidades = (unidades != null) ? unidades : new ArrayList<>(); // Inicializa como lista vazia
+	}
+	
+	private String mensagem;
 
 }

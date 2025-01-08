@@ -34,20 +34,73 @@ class EnderecoServiceImpl implements EnderecoService {
          response.setId(endereco.getId());
          response.setLogradouro(endereco.getLogradouro());
          response.setCidade(endereco.getCidade());
+         response.setBairro(endereco.getBairro());
+         response.setCep(endereco.getCep());
+         response.setComplemento(endereco.getComplemento());
+         response.setNumero(endereco.getNumero());
+         response.setUf(endereco.getUf());
          return response;
     }
 
     @Override
     public EnderecoResponse alterarEndereco(UUID id, EnderecoRequest request) {
-    	// TODO Auto-generated method stub
-        return new EnderecoResponse();
+    	
+		Endereco endereco = enderecoRepository.findById(id).get();
+		endereco.setCep(request.getCep());
+		endereco.setLogradouro(request.getLogradouro());
+		endereco.setNumero(request.getNumero());
+		endereco.setComplemento(request.getComplemento());
+		endereco.setBairro(request.getBairro());
+		endereco.setCidade(request.getCidade());
+		endereco.setUf(request.getUf());
+		enderecoRepository.save(endereco);
+
+		EnderecoResponse response = new EnderecoResponse();
+		response.setId(endereco.getId());
+		response.setLogradouro(endereco.getLogradouro());
+		response.setCidade(endereco.getCidade());
+		response.setBairro(endereco.getBairro());
+		response.setCep(endereco.getCep());
+		response.setComplemento(endereco.getComplemento());
+		response.setNumero(endereco.getNumero());
+		response.setUf(endereco.getUf());
+		return response;
     }
 
 	@Override
-	public EnderecoResponse inativarEndereco(UUID id) {
-		// TODO Auto-generated method stub
-		return null;
+	public EnderecoResponse deletarEndereco(UUID id) {
+		Endereco endereco = enderecoRepository.findById(id).get();
+ 
+        enderecoRepository.delete(endereco);
+
+        EnderecoResponse response = new EnderecoResponse();
+        response.setId(endereco.getId());
+        response.setLogradouro(endereco.getLogradouro());
+        response.setCidade(endereco.getCidade());
+        response.setBairro(endereco.getBairro());
+        response.setCep(endereco.getCep());
+        response.setComplemento(endereco.getComplemento());
+        response.setNumero(endereco.getNumero());
+        response.setUf(endereco.getUf());
+        return response;
+    }
+	
+	@Override
+	public EnderecoResponse buscarEndereco(UUID id) {
+		Endereco endereco = enderecoRepository.findById(id).get();
+
+		EnderecoResponse response = new EnderecoResponse();
+		response.setId(endereco.getId());
+		response.setLogradouro(endereco.getLogradouro());
+		response.setCidade(endereco.getCidade());
+		response.setBairro(endereco.getBairro());
+		response.setCep(endereco.getCep());
+		response.setComplemento(endereco.getComplemento());
+		response.setNumero(endereco.getNumero());
+		response.setUf(endereco.getUf());
+		return response;
 	}
+}
 
  
-}
+
