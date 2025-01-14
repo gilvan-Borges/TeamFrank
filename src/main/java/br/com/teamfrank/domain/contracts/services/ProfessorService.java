@@ -11,5 +11,5 @@ public interface ProfessorService {
     ProfessorResponse alterarProfessor(UUID id, ProfessorRequest request);
     ProfessorResponse excluirProfessor(UUID id);
     ProfessorResponse buscarProfessorPorId(UUID id);
-    List<ProfessorResponse> buscarProfessores();
+    List<ProfessorResponse> buscarProfessor();
 }

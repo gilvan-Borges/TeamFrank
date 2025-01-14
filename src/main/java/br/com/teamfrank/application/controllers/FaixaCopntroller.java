@@ -29,7 +29,7 @@ public class FaixaCopntroller {
 	}
 	
 	@PutMapping("/{id}")
-	public void alterarFaixa(@PathVariable UUID id, @RequestBody FaixaRequest request) {
+	public void alterarFaixa(@PathVariable UUID id, @RequestBody FaixaRequest request) throws ParseException {
 		faixaService.alterarFaixa(id, request);
 	}
 	

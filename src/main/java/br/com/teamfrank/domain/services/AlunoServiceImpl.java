@@ -44,10 +44,12 @@ class AlunoServiceImpl implements AlunoService {
     private ProfessorRepository professorRepository;
     @Autowired
     private FaixaRepository faixaRepository;
-
+    
+    
     @Override
     @Transactional
     public AlunoResponse cadastrarAluno(AlunoRequest request) {
+
         try {
             validarRequest(request);
 
@@ -79,13 +81,14 @@ class AlunoServiceImpl implements AlunoService {
             
             var response = new AlunoResponse();
             response.setId(aluno.getId());
+            
             response.setNome(aluno.getNome());
             response.setDatanasc(aluno.getDatanasc());
             response.setIdade(calcularIdade(aluno.getDatanasc()));
             response.setCpf(aluno.getCpf());
             response.setPai(aluno.getPai());
             response.setMae(aluno.getMae());
-            response.setTelelefone(aluno.getTelefone());
+            response.setTelefone(aluno.getTelefone());
             response.setResponsavel(aluno.getResponsavel());
             response.setSexo(aluno.getSexo());
            
@@ -111,7 +114,8 @@ class AlunoServiceImpl implements AlunoService {
             throw new IllegalArgumentException("Erro ao cadastrar aluno: " + e.getMessage());
         }
     }
-
+    
+    
     private void validarRequest(AlunoRequest request) {
         if (request.getEnderecoId() == null) {
             throw new IllegalArgumentException("ID do endereço é obrigatório");
@@ -145,6 +149,9 @@ class AlunoServiceImpl implements AlunoService {
                 () -> new IllegalArgumentException("Aluno não encontrado para atualização."));
 
         aluno.setNome(request.getNome());
+        aluno.setDatanasc(request.getDatanasc());
+        aluno.setSexo(request.getSexo());
+        aluno.setTipo(TipoAluno.valueOf(request.getTipo()));
         aluno.setCpf(request.getCpf());
         aluno.setPai(request.getPai());
         aluno.setMae(request.getMae());
@@ -162,7 +169,7 @@ class AlunoServiceImpl implements AlunoService {
         response.setCpf(aluno.getCpf());
         response.setPai(aluno.getPai());
         response.setMae(aluno.getMae());
-        response.setTelelefone(aluno.getTelefone());
+        response.setTelefone(aluno.getTelefone());
         response.setResponsavel(aluno.getResponsavel());
         response.setSexo(aluno.getSexo());
         
@@ -176,6 +183,7 @@ class AlunoServiceImpl implements AlunoService {
         enderecoResponse.setNumero(aluno.getEndereco().getNumero());
         enderecoResponse.setUf(aluno.getEndereco().getUf());
         enderecoResponse.setComplemento(aluno.getEndereco().getComplemento());
+   
         
         response.setEndereco(enderecoResponse);
         
@@ -192,7 +200,7 @@ class AlunoServiceImpl implements AlunoService {
         
         
         
-        response.setMensagem("Aluno Alterado com sucesso");
+        response.setMensagem("Aluno Atualizado com sucesso");
         
         return response;
     }
@@ -211,7 +219,7 @@ class AlunoServiceImpl implements AlunoService {
         response.setCpf(aluno.getCpf());
         response.setPai(aluno.getPai());
         response.setMae(aluno.getMae());
-        response.setTelelefone(aluno.getTelefone());
+        response.setTelefone(aluno.getTelefone());
         response.setResponsavel(aluno.getResponsavel());
         response.setSexo(aluno.getSexo());
         
@@ -258,7 +266,7 @@ class AlunoServiceImpl implements AlunoService {
         response.setCpf(aluno.getCpf());
         response.setPai(aluno.getPai());
         response.setMae(aluno.getMae());
-        response.setTelelefone(aluno.getTelefone());
+        response.setTelefone(aluno.getTelefone());
         response.setResponsavel(aluno.getResponsavel());
         response.setTipo(aluno.getTipo().toString());
         response.setSexo(aluno.getSexo());
@@ -314,7 +322,7 @@ class AlunoServiceImpl implements AlunoService {
             response.setCpf(aluno.getCpf());
             response.setPai(aluno.getPai());
             response.setMae(aluno.getMae());
-            response.setTelelefone(aluno.getTelefone());
+            response.setTelefone(aluno.getTelefone());
             response.setResponsavel(aluno.getResponsavel());
             response.setTipo(aluno.getTipo().name());
             response.setSexo(aluno.getSexo());

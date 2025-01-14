@@ -15,7 +15,7 @@ public class AlunoResponse {
     private String cpf;
     private String pai;
     private String mae;
-    private String telelefone;
+    private String telefone;
     private String responsavel;
     private String tipo;
     private EnderecoResponse endereco;

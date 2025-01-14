@@ -1,7 +1,6 @@
 package br.com.teamfrank.domain.services;
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +22,7 @@ public class FaixaService {
 	    faixa.setId(UUID.randomUUID());
 	    faixa.setCor(request.getCor());
 	    faixa.setNivel(request.getNivel());
-	    faixa.setDataAquisicao(new SimpleDateFormat("yyyy-MM-dd").parse(request.getDataAquisicao()));
+	    faixa.setDataAquisicao(request.getDataAquisicao());
 	    		// Adiciona a data de aquisição
 
 	    faixaRepository.save(faixa);
@@ -41,7 +40,7 @@ public class FaixaService {
 		var faixa = faixaRepository.findById(id).get();
 		faixa.setCor(request.getCor());
 		faixa.setNivel(request.getNivel());
-		 faixa.setDataAquisicao(new SimpleDateFormat("dd/MM/yyyy").parse(request.getDataAquisicao()));
+		 faixa.setDataAquisicao(request.getDataAquisicao());  // Altera a data de aquisição);
 		faixaRepository.save(faixa);
 	}
 	

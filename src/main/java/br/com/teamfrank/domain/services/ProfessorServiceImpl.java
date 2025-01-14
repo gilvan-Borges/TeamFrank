@@ -125,7 +125,7 @@ public class ProfessorServiceImpl implements ProfessorService {
 	}
 
 	@Override
-	public List<ProfessorResponse> buscarProfessores() {
+	public List<ProfessorResponse> buscarProfessor() {
 		var professores = professorRepository.findAll();
 		return professores.stream().map(this::toResponse).toList();
 	}

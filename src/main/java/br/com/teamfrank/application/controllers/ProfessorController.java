@@ -29,8 +29,8 @@ class buscarProfessores {
     }
     
    	@GetMapping
-   	public List<ProfessorResponse> buscarProfessores() {
-   		return professorService.buscarProfessores();
+   	public List<ProfessorResponse> buscarProfessor() {
+   		return professorService.buscarProfessor();
    	}
 
     @PutMapping("/{id}")
