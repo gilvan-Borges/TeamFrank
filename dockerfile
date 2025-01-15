@@ -10,7 +10,6 @@ RUN mvn dependency:go-offline
 # Copiar o restante do projeto e buildar o JAR
 COPY . .
 RUN chmod +x mvnw
-RUN ./mvnw -B clean package -DskipTests
 
 # Imagem final com OpenJDK
 FROM openjdk:21-jdk-slim
